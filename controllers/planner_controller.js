@@ -1,6 +1,5 @@
 var express = require("express");
 var router = express.Router();
-
 var plan = require("../models/plan.js");
 
 router.get("/", function(req, res) {
