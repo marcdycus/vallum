@@ -14,9 +14,9 @@ router.get("/plans", function(req, res) {
 
 router.post("/plans", function(req, res) {
     plan.create([
-        'name', 'eaten'
+        'plan', 'in_table'
     ], [
-        req.body.name, req.body.eaten
+        req.body.plan, req.body.in_table
     ], function(result) {
         res.json({ id: result.insertId });
     });
