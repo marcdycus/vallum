@@ -8,22 +8,29 @@ $(function() {
 
     $("#addTable").on("click", function (event) {
         // add new div for table
+        // for loop for each table to have an individual id
 
         var content = $("#content");
         var newTable = "<div class='itemTable'>"
         newTable += "<div class='tableHead'><button class='modify'>&#9998;</button>"
-        newTable += "<p>Table Name</p><button class='delete'>&#215;</button></div>"
+        newTable += "<button class='delete'>&#215;</button><p class='modifyThis'>Table Name</p></div>"
+        newTable += "<div class='itemsArea'></div>"
         newTable += "<button class='addItem'>&#43;</button></div>";
 
+       
+
         content.append(newTable);
-        // each table should have buttons
-        // to delete and modify and add new item
-        // append to content div
         // reload location
     });
 
     $(document).on("click", ".addItem", function (event) {
-        // append to div
+        var table = $(".itemsArea"); // change to append to individual table id, not class
+        var newItem = "<div class='item'><button class='modify'>&#9998;</button>"
+        newItem += "<button class='delete'>&#215;</button>";
+        newItem += "<p class='modifyThis'>Item name/description</p></div>"
+        
+        
+        table.append(newItem);
     });
 
     $(document).on("click", ".modify", function (event) {
@@ -61,7 +68,7 @@ $(function() {
 });
 
 //   // CREATE NEW ITEM
-//   $('#newItemSubmit').on('click', function(event) {
+//   $('.addItem').on('click', function(event) {
 //     event.preventDefault();
 //     let newItem = {
 //       plan: $('#itemInput').val().trim(),

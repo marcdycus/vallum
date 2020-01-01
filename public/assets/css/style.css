@@ -22,6 +22,7 @@ body {
     padding: 10px;
     border: 1px solid black;
     border-radius: 5px;
+    min-width: 200px;
 }
 
 header {
@@ -36,7 +37,7 @@ header {
 
 #title a {
     position: absolute;
-    padding-left: 10%;
+    padding-left: 4%;
     text-decoration: none;
 }
 
@@ -125,10 +126,14 @@ header {
 .tableHead p {
     display: inline-table;
     margin: 0px;
-    padding-right: 20px;
-    padding-left: 20px;
+    width: 85%;
     border-bottom: 1px solid gray;
     padding-bottom: 8px;
+}
+
+.tableHead {
+    width: 100%;
+    text-align: center;
 }
 
 .addItem {
@@ -145,5 +150,25 @@ header {
 
 .delete, .modify {
     cursor: pointer;
-    
 }
+
+.modify {
+    float: left;
+}
+
+.item p {
+    text-align: center;
+    padding: 5px;
+}
+
+.delete {
+    float: right;
+}
+
+.item {
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px gray;
+    margin: 10px;
+}
+
