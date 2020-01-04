@@ -87,7 +87,23 @@ var orm = {
     
           cb(result);
         });
-      }
+      },
+
+    innerJoin: function(whatToSelect, tableOne, tableTwo, onTableOneCol, onTableTwoCol) {
+        
+        var queryString = "SELECT ?? FROM ?? AS tOne";
+        queryString += " INNER JOIN ?? as tTwo";
+        queryString += " ON tOne.?? = tTwo.??";
+
+        console.log(queryString);
+
+        connection.query(queryString, [whatToSelect, tableOne, tableTwo, onTableOneCol, onTableTwoCol], function(err, result) {
+            if (err) {
+                throw err;
+            }
+            cb(result);
+        });
+    }
 };
 
 module.exports = orm;

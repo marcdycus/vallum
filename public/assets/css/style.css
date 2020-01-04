@@ -15,16 +15,6 @@ body {
     padding: 1.5em;
 }
 
-.itemTable {
-    float: left;
-    margin-right: 30px;
-    margin-bottom: 50px;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
-    min-width: 200px;
-}
-
 header {
     height: 60px;
     padding: 10px;
@@ -123,6 +113,16 @@ header {
     border-radius: 5px;
   }
 
+.itemTable {
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 50px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    min-width: 200px;
+}
+
 .tableHead p {
     display: inline-table;
     margin: 0px;
@@ -168,7 +168,9 @@ header {
 .item {
     border: 1px solid black;
     border-radius: 5px;
-    box-shadow: 0px 0px 5px gray;
+    box-shadow: 0px 1px 3px rgb(146, 146, 146);
     margin: 10px;
+    padding: 5px;
+    cursor: pointer;
 }
 
