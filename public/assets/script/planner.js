@@ -3,34 +3,53 @@ $(function() {
         type: "GET"
     }).then(function (data) {
         // organize data onto page
+        // var allTables = $(".itemTable");
+        var content = $("#content");
+        var tables = data.plans;
+        var len = tables.length;
+
+        for (let i = 0; i < len; i++) {
+            var newTable = "<div class='itemTable' data-tableID=" + tables[i].id
+            newTable += "><div class='tableHead'><button class='modify'>&#9998;</button>"
+            newTable += "<button class='delete'>&#215;</button><p class='modifyThis'>this will be modified</p></div>"
+            newTable += "<div class='itemsArea'></div>"
+            newTable += "<button class='addItem'>&#43;</button></div>";
+            content.append(newTable);
+        }
+
+
+        
         // grab all table divs
     });
 
     $("#addTable").on("click", function (event) {
-        // add new div for table
-        // for loop for each table to have an individual id
-
-        var content = $("#content");
-        var newTable = "<div class='itemTable'>"
-        newTable += "<div class='tableHead'><button class='modify'>&#9998;</button>"
-        newTable += "<button class='delete'>&#215;</button><p class='modifyThis'>Table Name</p></div>"
-        newTable += "<div class='itemsArea'></div>"
-        newTable += "<button class='addItem'>&#43;</button></div>";
-
-       
-
-        content.append(newTable);
-        // reload location
+        event.preventDefault();
+     
+        var newTableData = {
+            plan: 'Choose a plan title!',
+        };
+        
+       $.ajax("/plans", {
+           type: "POST", 
+           data: JSON.stringify(newTableData),
+           dataType: 'json',
+           contentType: 'application/json'
+       }).then(function () {
+           console.log("added new item with id ", newTableData);
+           
+           location.reload();
+       });
     });
 
     $(document).on("click", ".addItem", function (event) {
-        var table = $(".itemsArea"); // change to append to individual table id, not class
-        var newItem = "<div class='item'><button class='modify'>&#9998;</button>"
-        newItem += "<button class='delete'>&#215;</button>";
-        newItem += "<p class='modifyThis'>Item name/description</p></div>"
+        // var table = $(".itemsArea");
+        var tableId = $(this).attr("data-tableid"); // change to append to individual table id, not class
+        // var newItem = "<div class='item'><button class='modify'>&#9998;</button>"
+        // newItem += "<button class='delete'>&#215;</button>";
+        // newItem += "<p class='modifyThis'>Item name/description</p></div>"
         
-        
-        table.append(newItem);
+        console.log(tableId);
+        // table.append(newItem);
     });
 
     $(document).on("click", ".modify", function (event) {

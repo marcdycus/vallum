@@ -6,7 +6,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const routes = require('./controllers/planner_controller');
+const routes = require('./controllers/planner_controller.js');
 
 app.use(routes);
 
