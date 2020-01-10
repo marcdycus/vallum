@@ -1,5 +1,8 @@
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* background-image: url("../img/2560x1440-blue-abstract-noise-free-website-background-image.jpg"); */
+    background-color: #e7717d;
+    line-height: 150%;
 }
 
 .dropdown-content {
@@ -16,30 +19,96 @@ body {
 }
 
 header {
-    height: 60px;
+    /* background-color: #c2cad0; */
+    background-color: #afd275;
+    height: 145px;
     padding: 10px;
+    padding-bottom: 30px;
     border-bottom: 1px solid black;
+    /* margin-bottom: 20px; */
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.5);
+    /* display: block */
+    overflow: auto;
+    
+}
+
+#description {
+    /* background-color: #afd275; */
+    background-color: #c2cad0;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.5);
+    font-size: 24px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.p-desc {
+    /* font-family: 'Caveat', cursive; */
+    color: black;
+    line-height: 150%;
 }
 
 #addTables {
     float: right;
-}
-
-#title a {
+    background-color: white;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.5);
     position: absolute;
-    padding-left: 4%;
-    text-decoration: none;
+    top: 5%;
+    right: 2%;
 }
 
 #title {
     /* text-align: center; */
     width: 100%;
+    /* position: absolute; */
+    padding-left: 15%;
+    text-decoration: none;
+    color: black;
 }
 
 #title h1 {
-    padding: 0px;
+    /* padding: 0; */
     margin-top: 5px;
-    color: black;
+    /* color: black; */
+}
+
+h1 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 100px;
+    margin-left: 50px;
+}
+
+.color-option {
+    height: 20px;
+    width: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    /* background-color: red; */
+}
+#red {
+    background-color: #e7717d;
+}
+#gray {
+    background-color: #c2cad0;
+}
+
+#tan {
+    background-color: #c2b920;
+}
+#brown {
+    background-color: #7e685a;
+}
+#green {
+    background-color: #afd275;
+}
+#turquoise {
+    background-color: #66fcf1;
+}
+#blue {
+    background-color: #123c69;
+}
+#orange {
+    background-color: #ffcb9a;
 }
 
 .dropdown .dropbtn {
@@ -81,6 +150,7 @@ header {
 }
 
 #addTable {
+    /* background-color: white; */
     font-size: 16px;
     border: 1px solid;
     outline: none;
@@ -90,6 +160,7 @@ header {
     font-family: inherit;
     margin: 0;
     border-radius: 5px;
+    float: right;
 }
 
 .dropdown {
@@ -111,9 +182,11 @@ header {
     background-color: #333;
     float: left;
     border-radius: 5px;
+    margin-top: 27px;
   }
 
 .itemTable {
+    background-color: white;
     float: left;
     margin-right: 30px;
     margin-bottom: 50px;
@@ -121,6 +194,7 @@ header {
     border: 1px solid black;
     border-radius: 5px;
     min-width: 200px;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.5);
 }
 
 .tableHead p {
@@ -174,3 +248,29 @@ header {
     cursor: pointer;
 }
 
+/* .modal {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 1; */
+    /* border: 1px solid black; */
+    /* text-align: center; */
+    /* background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: whitesmoke;
+    margin: 20% auto;
+    padding: 20px 30px;
+    width: 60%;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+.close {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+} */

@@ -95,6 +95,8 @@ var orm = {
         var query = "DELETE FROM " + table;
         query += " WHERE ";
         query += condition;
+
+        console.log(query);
     
         connection.query(query, function(err, result) {
           if (err) {
@@ -104,6 +106,20 @@ var orm = {
           cb(result);
         });
       }
+
+    //   deleteAll: function(table, cb) {
+    //       var query = "DELETE FROM " + table;
+
+    //       console.log(query);
+
+    //       connection.query(query, function(err, result) {
+    //           if (err) {
+    //               throw err;
+    //           }
+
+    //           cb(result);
+    //       });
+    //   }
 };
 
 module.exports = orm;
