@@ -2,9 +2,12 @@ var express = require("express");
 var router = express.Router();
 var newTable = require("../models/tables.js");
 var newPlan = require("../models/plans.js");
+var allColors = require("../models/colors.js");
+
 router.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "public.index.html"));
 });
+
 router.get("/tables", function (req, res) {
     newTable.all(function (data) {
         res.json({ tables: data });
@@ -15,6 +18,7 @@ router.get("/plans", function (req, res) {
         res.json({ plans: data });
     });
 });
+
 router.post("/tables", function (req, res) {
     newTable.create([
         'title', 'color_code'
@@ -22,7 +26,7 @@ router.post("/tables", function (req, res) {
         req.body.title,
         req.body.color_code
     ], function (result) {
-        res.json({ id: result.insertId });
+        res.json({ tableId: result.insertId });
     });
 });
 router.post("/plans", function (req, res) {
@@ -34,9 +38,11 @@ router.post("/plans", function (req, res) {
         req.body.tableId,
         req.body.color_code
     ], function (result) {
-        res.json({ id: result.insertId });
+        res.json({ planId: result.insertId });
     });
 });
+
+
 router.put("/tables/:tableId", function (req, res) {
     var condition = "tableId = " + req.params.tableId;
     console.log("condition: ", condition);
@@ -47,12 +53,12 @@ router.put("/tables/:tableId", function (req, res) {
         if (result.changedRow == 0) {
             return res.status(404).end();
         } else {
-            res.json({ id: req.params.id });
+            res.json({ tableId: req.params.tableId });
         }
     });
 });
-router.put("/plans/:id", function (req, res) {
-    var condition = "id = " + req.params.id;
+router.put("/plans/:planId", function (req, res) {
+    var condition = "planId = " + req.params.planId;
     console.log("condition: ", condition);
     newPlan.update({
         plan: req.body.plan,
@@ -63,7 +69,7 @@ router.put("/plans/:id", function (req, res) {
         if (result.changedRow == 0) {
             return res.status(404).end();
         } else {
-            res.json({ id: req.params.id });
+            res.json({ planId: req.params.planId });
         }
     });
 });
@@ -77,8 +83,8 @@ router.delete("/tables/:tableId", function (req, res) {
         }
     });
 });
-router.delete("/plans/:id", function (req, res) {
-    var condition = "id = " + req.params.id;
+router.delete("/plans/:planId", function (req, res) {
+    var condition = "planId = " + req.params.planId;
     newPlan.delete(condition, function (result) {
         if (result.affectedRows == 0) {
             return res.status(404).end();
