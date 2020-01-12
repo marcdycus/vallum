@@ -15,7 +15,7 @@ create table plans (
   description varchar(500),
   tableId integer,
   color_code varchar(30),
-  foreign key (tableId) references tables(tableId),
+  foreign key (tableId) references tables(tableId) ON DELETE CASCADE,
   primary key (planId)
   );
 
