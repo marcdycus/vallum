@@ -18,3 +18,12 @@ create table plans (
   foreign key (tableId) references tables(tableId),
   primary key (planId)
   );
+
+create table colors (
+	schemeId integer auto_increment not null,
+  header varchar(40),
+  body varchar(40),
+  title varchar(40),
+  buttons varchar(40),
+  primary key (schemeId)
+  );
