@@ -91,6 +91,9 @@ $(function () {
         event.preventDefault();
         var id = $(this).attr("data-grabId");
         var appendArea = $(this).siblings(".itemsArea");
+        $(this).removeClass("expand");
+        $(this).addClass("collapseButton");
+        $(this).html('\u21E1');
         $.ajax("/plans/", {
             type: "GET"
         }).then(function (data) {
@@ -106,6 +109,16 @@ $(function () {
             }
         });
     });
+
+    $(document).on("click", ".collapseButton", function(event) {
+        event.preventDefault();
+        $(this).removeClass("collapseButton");
+        $(this).addClass("expand");
+        $(this).html('\u21E3');
+        var plans = $(this).siblings(".itemsArea");
+        $(plans).empty();
+    });
+
 
     $.ajax("/colors", {
         type: "GET"
