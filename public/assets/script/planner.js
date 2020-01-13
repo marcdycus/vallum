@@ -119,7 +119,7 @@ $(function () {
         $(plans).empty();
     });
 
-
+    // CHANGE PAGE COLOR SCHEME
     $.ajax("/colors", {
         type: "GET"
     }).then(function(data) {
@@ -220,12 +220,12 @@ $(function () {
             var tables = data.tables;
             var len = tables.length;
             for (var i = 0; i < len; i++) {
-                if ((tables[i].tableId === id) && (tables[i].title != "Title your list!")) {
+                if ((tables[i].tableId === id) && (tables[i].title != "Title")) {
                     $("#editTitle").attr("value", tables[i].title);
                     var colorCode = tables[i].color_code;
                     colorBtn(colorCode);
                 }
-                else if ((tables[i].tableId === id) && (tables[i].title === "Title your list!")) {
+                else if ((tables[i].tableId === id) && (tables[i].title === "Title")) {
                     $("#editTitle").removeAttr("value");
                     $("input").prop("checked", false);
                 }
@@ -250,13 +250,13 @@ $(function () {
             var plans = data.plans;
             var len = plans.length;
             for (var i = 0; i < len; i++) {
-                if ((plans[i].planId === itemId) && (plans[i].plan != "Plan title")) {
+                if ((plans[i].planId === itemId) && (plans[i].plan != "Plan")) {
                     $("#editItemTitle").attr("value", plans[i].plan);
                     $("#editDescription").attr("value", plans[i].description);
                     var colorCode = plans[i].color_code;
                     colorBtn(colorCode);
                 }
-                else if ((plans[i].planId === itemId) && (plans[i].plan === "Plan title")) {
+                else if ((plans[i].planId === itemId) && (plans[i].plan === "Plan")) {
                     $("#editItemTitle").removeAttr("value");
                     $("#editDescription").removeAttr("value");
                     $("input").prop("checked", false);
