@@ -110,7 +110,7 @@ $(function () {
         });
     });
 
-    $(document).on("click", ".collapseButton", function(event) {
+    $(document).on("click", ".collapseButton", function (event) {
         event.preventDefault();
         $(this).removeClass("collapseButton");
         $(this).addClass("expand");
@@ -122,15 +122,15 @@ $(function () {
     // CHANGE PAGE COLOR SCHEME
     $.ajax("/colors", {
         type: "GET"
-    }).then(function(data) {
+    }).then(function (data) {
 
-       
+
         var bodyDiv = $(document).find('body');
         var body = data.colors[0].body;
 
         var headerDiv = $(document).find('header');
         var header = data.colors[0].header;
-        
+
         var title = data.colors[0].title;
         var titleDiv = $(document).find("#title");
 
@@ -138,7 +138,7 @@ $(function () {
         var buttonsDiv = $(document).find(".buttons");
 
         $(bodyDiv[0]).css("background-color", body);
-        $(headerDiv[0]).css("background-color", header); 
+        $(headerDiv[0]).css("background-color", header);
         $(titleDiv[0]).css("color", title);
         $(buttonsDiv[0]).css('background-color', buttons);
         $(buttonsDiv[1]).css('background-color', buttons);
@@ -211,9 +211,9 @@ $(function () {
 
         var id = parseInt($(this).attr("modifyId"));
         var saveButton = $("#saveTable");
-        
+
         saveButton.attr("tableId", id);
-         // SHOW EXISTING TABLE DATA IN FORM
+        // SHOW EXISTING TABLE DATA IN FORM
         $.ajax("/tables", {
             type: "GET"
         }).then(function (data) {
@@ -307,10 +307,10 @@ $(function () {
         var tableId = $(this).attr("tableId");
         var plan = $("#editItemTitle").val().trim();
         var description = $("#editDescription").val().trim();
-       
+
         var colorChoice = $("input[name='inlineRadioOptions']:checked").val();
         var colorCode = updateColor(colorChoice);
-        
+
         var updatedPlan = {
             plan: plan,
             description: description,
@@ -377,7 +377,7 @@ $(function () {
         }
     });
 
-    $(document).on("click", "#changeScheme", function(event) {
+    $(document).on("click", "#changeScheme", function (event) {
         $("#schemeEditor").show();
     });
 
@@ -464,3 +464,25 @@ $(function () {
     });
 
 });
+
+// SET BANNER LOCALSTORAGE
+    // $(document).ready(function () {
+    //     var bannerState;
+    //     var togglerState;
+    //     var togglerAria;
+
+    //     $("#toggler").on("click", function (event) {
+    //         localStorage.clear();
+    //         setTimeout(function () {
+    //             bannerState = $("#description").attr("class");
+    //             togglerState = $("#toggler").attr("class");
+    //             togglerAria = $("#toggler").attr("aria-expanded");
+    //             localStorage.setItem("banner-state", bannerState);
+    //             localStorage.setItem("toggler-state", togglerState);
+    //             localStorage.setItem("toggler-aria", togglerAria);
+    //         }, 2000);
+    //     });
+    //     $("#description").attr("class", localStorage.getItem("banner-state"));
+    //     $("#toggler").attr("class", localStorage.getItem("toggler-state"));
+    //     $("#toggler").attr("aria-expanded", localStorage.getItem("toggler-aria"));
+    // });
