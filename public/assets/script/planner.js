@@ -281,7 +281,8 @@ $(function () {
 
         var tableId = $(this).attr("tableId");
         var titleInput = $("#editTitle").val().trim();
-        var colorChoice = $("input[name='inlineRadioOptions']:checked").val();
+        var colorChoice = $("input[name='inlineRadioOptions-table']:checked").val();
+        console.log(colorChoice);
         var colorCode = updateColor(colorChoice);
 
         var updatedTable = {
@@ -308,7 +309,8 @@ $(function () {
         var plan = $("#editItemTitle").val().trim();
         var description = $("#editDescription").val().trim();
 
-        var colorChoice = $("input[name='inlineRadioOptions']:checked").val();
+        var colorChoice = $("input[name='inlineRadioOptions-item']:checked").val();
+        console.log(colorChoice);
         var colorCode = updateColor(colorChoice);
 
         var updatedPlan = {
@@ -384,7 +386,7 @@ $(function () {
     $(document).on("click", "#saveColors", function (event) {
         event.preventDefault();
 
-        var colorChoice = $("input[name='inlineRadioOptions']:checked").val();
+        var colorChoice = $("input[name='inlineRadioOptions-scheme']:checked").val();
         var header;
         var body;
         var title;
