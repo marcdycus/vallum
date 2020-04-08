@@ -71,7 +71,6 @@ $(function () {
         type: "GET"
     }).then(function (data) {
         // organize data onto page
-        // var allTables = $(".itemTable");
         var content = $("#content");
         var tables = data.tables;
         var len = tables.length;
@@ -166,8 +165,10 @@ $(function () {
         });
     });
 
+
+    // Add button for each table to add items
     $(document).on("click", ".addItem", function (event) {
-        var parentId = $(this).parent().attr("data-tableid"); // change to append to individual table id, not class
+        var parentId = $(this).parent().attr("data-tableid"); 
         var newPlanData = {
             plan: 'Plan',
             description: 'description',
@@ -184,6 +185,8 @@ $(function () {
         });
     });
 
+
+    // delete button for each table
     $(document).on("click", ".delete-table", function (event) {
         var idToDelete = $(this).attr("deleteId");
 
@@ -195,6 +198,8 @@ $(function () {
         })
     });
 
+
+    // delete button for each item
     $(document).on("click", ".delete-item", function (event) {
         var idToDelete = $(this).attr("delete-id");
 
@@ -236,6 +241,8 @@ $(function () {
 
     });
 
+
+    // modify each item
     $(document).on("click", ".modify-item", function (event) {
 
         var itemId = parseInt($(this).attr("modifyId"));
@@ -301,6 +308,8 @@ $(function () {
         })
     });
 
+
+    // save item
     $(document).on("click", "#saveItem", function (event) {
         event.preventDefault();
 
@@ -332,8 +341,11 @@ $(function () {
     });
 
 
+    // drag and drop, on start of drag
     document.addEventListener("dragstart", function (event) {
-
+        setTimeout(() => {
+            event.target.style.display = "none"
+        }), 0;
         event.dataTransfer.setData("Text", event.target.id);
         event.dataTransfer.setData("tableId", $(event.target).data("tableid"));
         event.dataTransfer.setData("planId", $(event.target).data("planid"));
@@ -342,12 +354,31 @@ $(function () {
         event.dataTransfer.setData("description", $(event.target).find(".description").text());
 
     });
+
+    // drag and drop, events that would happen between start of drag and drop event
     document.addEventListener("dragover", function (event) {
         event.preventDefault();
     });
 
+    $(document).on('drop','#droptarget',function(e){
+        console.log(e.originalEvent.dataTransfer.getData("data"));
+      $(this).removeClass('hover');
+    });
+    
+    $(document).on('dragover','#droptarget',function(e){
+      e.preventDefault();
+      $(this).addClass('hover');
+    });
+    
+    $(document).on('dragleave','#droptarget',function(e){
+      $(this).removeClass('hover');
+    });
+
+
+    // drag and drop, on drop
     document.addEventListener("drop", function (event) {
         event.preventDefault();
+        // $('#droptarget').removeClass('hover');
         var targetId = $(event.target).parent().attr("data-tableid");
         var elemId = event.dataTransfer.getData("Text");
         var planId = event.dataTransfer.getData("planId");
@@ -357,6 +388,7 @@ $(function () {
 
         var newId;
 
+        // if drop is in the right div
         if (event.target.id == "droptarget") {
             newId = parseInt(targetId);
 

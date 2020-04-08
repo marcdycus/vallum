@@ -324,6 +324,11 @@ h1 {
     margin-top: 20px;
 }
 
+.hover {
+    height: 100px;
+
+}
+
 /* .modal {
     display: none;
     position: absolute;
